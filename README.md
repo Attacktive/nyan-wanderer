@@ -18,12 +18,8 @@ A fun Plasma 6 widget that features an animated nyancat wandering around your de
 
 2. Build and install the widget:
 	```bash
-	mkdir build
-	cd build
-	cmake ..
-	make
-	sudo make install
-	```
+	./install.sh
+    ```
 
 3. Add the widget to your desktop or panel through the Plasma widgets menu
 
