@@ -22,7 +22,3 @@ A fun Plasma 6 widget that features an animated nyancat wandering around your de
     ```
 
 3. Add the widget to your desktop or panel through the Plasma widgets menu
-
-## License
-
-This project is licensed under GPL-2.0+
