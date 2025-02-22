@@ -1,6 +1,8 @@
-# Wandering Nyancat Plasma Widget
+# Nyan Wanderer Plasma Widget
 
 A fun Plasma 6 widget that features an animated nyancat wandering around your desktop!
+
+![image](https://github.com/user-attachments/assets/b857c949-39dc-44a1-8feb-a1f25295c5c6)
 
 ## Features
 
