@@ -1,0 +1,21 @@
+name: 'Release'
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  release:
+    runs-on: 'ubuntu-latest'
+    steps:
+      - name: 'Checkout'
+        uses: 'actions/checkout@v4'
+      # For lack of the packages to build, it simply archives the source code which will work for now.
+      - name: 'Archive Artifacts'
+        run: 'zip -r xyz.attacktive.nyan-wanderer.plasmoid package'
+      - name: 'Create Release'
+        uses: 'softprops/action-gh-release@v2'
+        with:
+          prerelease: true
+          generate_release_notes: true
+          files: 'xyz.attacktive.nyan-wanderer.plasmoid'
