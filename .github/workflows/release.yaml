@@ -11,6 +11,9 @@ jobs:
       - name: 'Checkout'
         uses: 'actions/checkout@v4'
       # For lack of the packages to build, it simply archives the source code which will work for now.
+      # I may have to add a PPA of kde NEON
+      # by adding `deb [trusted=yes] http://archive.neon.kde.org/user noble main` to '/etc/apt/sources.list.d/neon.list'
+      # in order to install required dependencies
       - name: 'Archive Artifacts'
         run: 'zip -r xyz.attacktive.nyan-wanderer.plasmoid package'
       - name: 'Create Release'
