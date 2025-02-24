@@ -1,8 +1,3 @@
-
-      # For lack of the packages to build, it simply archives the source code which will work for now.
-      # I may have to add a PPA of kde NEON
-      # by adding `deb [trusted=yes] http://archive.neon.kde.org/user noble main` to '/etc/apt/sources.list.d/neon.list'
-      # in order to install required dependencies
 name: 'Release'
 on:
   push:
@@ -18,9 +13,9 @@ jobs:
       - name: 'Install Dependencies'
         run: |
           # Adding kde NEON PPA to the containerized Ubuntu because it lacks dependencies for Plasma 6
-          echo "deb [trusted=yes] http://archive.neon.kde.org/user noble main" | tee /etc/apt/sources.list.d/neon.list
-          apt update
-          apt install -y kf6-extra-cmake-modules plasma-framework6-dev
+          echo "deb [trusted=yes] http://archive.neon.kde.org/user noble main" | sudo tee /etc/apt/sources.list.d/neon.list
+          sudo apt update
+          sudo apt install -y kf6-extra-cmake-modules plasma-framework6-dev
       - name: 'Build Plasmoid'
         run: './install.sh'
       - name: 'Archive Artifacts'
