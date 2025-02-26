@@ -9,7 +9,7 @@ PlasmoidItem {
 	id: root
 
 	property int nyancatSize: plasmoid.configuration.imageSize
-	property int speed: 2
+	property double speed: plasmoid.configuration.speed
 	property point targetPosition: Qt.point(0, 0)
 	property bool movingRight: true
 	property string imageSource: plasmoid.configuration.customImagePath || "../images/nyancat.gif"
