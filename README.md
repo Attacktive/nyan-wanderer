@@ -1,4 +1,4 @@
-# Nyan Wanderer Plasma Widget
+# Nyan Wanderer
 
 [![CodeFactor](https://www.codefactor.io/repository/github/attacktive/nyan-wanderer/badge)](https://www.codefactor.io/repository/github/attacktive/nyan-wanderer)
 
