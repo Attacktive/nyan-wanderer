@@ -1,5 +1,7 @@
 # Nyan Wanderer Plasma Widget
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1a217cace5a44ac392eff0ba365732aa)](https://app.codacy.com/gh/Attacktive/nyan-wanderer?utm_source=github.com&utm_medium=referral&utm_content=Attacktive/nyan-wanderer&utm_campaign=Badge_Grade)
+
 A fun Plasma 6 widget that features an animated nyancat wandering around your desktop!
 
 ![image](https://github.com/user-attachments/assets/b857c949-39dc-44a1-8feb-a1f25295c5c6)
