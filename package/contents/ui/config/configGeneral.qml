@@ -12,9 +12,11 @@ Page {
 
 	property alias cfg_imageSize: imageSizeSpinBox.value
 	property alias cfg_customImagePath: customImageField.text
+	property alias cfg_speed: speedSlider.value
 
 	property int cfg_imageSizeDefault: 128
 	property string cfg_customImagePathDefault: ""
+	property double cfg_speedDefault: 2.0
 
 	FileDialog {
 		id: fileDialog
@@ -62,6 +64,26 @@ Page {
 						onTriggered: customImageField.text = ""
 					}
 				]
+			}
+
+			RowLayout {
+				Kirigami.FormData.label: i18n("Speed:")
+				Layout.fillWidth: true
+
+				Slider {
+					id: speedSlider
+					Layout.fillWidth: true
+					from: 0.5
+					to: 10.0
+					stepSize: 0.1
+					value: cfg_speedDefault
+				}
+
+				Label {
+					text: speedSlider.value.toFixed(1) + "×"
+					Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 6
+					horizontalAlignment: Text.AlignRight
+				}
 			}
 		}
 

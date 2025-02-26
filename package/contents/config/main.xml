@@ -11,5 +11,9 @@
 			<label>Path to custom image</label>
 			<default></default>
 		</entry>
+		<entry name="speed" type="Double">
+			<label>Movement speed</label>
+			<default>2.0</default>
+		</entry>
 	</group>
 </kcfg>
