@@ -5,7 +5,7 @@
 A fun Plasma 6 widget that features an animated nyancat wandering around your desktop!
 It's completely useless by design. 😏
 
-![image](https://github.com/user-attachments/assets/b857c949-39dc-44a1-8feb-a1f25295c5c6)
+![Nyan Cat](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaTRwNXczM3I2dmVkeTlzcTJlamwyaXVna3N6MG05cTA1ZXFmZ2Q1ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2Y4fWnTIcE5p0NML85/giphy.gif)
 
 ## Features
 
