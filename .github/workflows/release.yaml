@@ -4,6 +4,9 @@ on:
     tags:
       - '**'
 
+env:
+  artifact_name: 'xyz.attacktive.nyan-wanderer-$GITHUB_REF_NAME.plasmoid'
+
 jobs:
   release:
     runs-on: 'ubuntu-latest'
@@ -20,20 +23,19 @@ jobs:
         run: './install.sh'
       - name: 'Archive Artifacts'
         run: |
-          echo "$$GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "GITHUB_REF_NAME: $GITHUB_REF_NAME"
 
           BUILD_OUTPUT_DIRECTORY="$HOME/.local/share/plasma/plasmoids/xyz.attacktive.nyan-wanderer"
           echo "$BUILD_OUTPUT_DIRECTORY"
 
-          ARTIFACT_FILENAME="xyz.attacktive.nyan-wanderer.plasmoid-$GITHUB_REF_NAME"
           echo "$ARTIFACT_FILENAME"
 
           echo 'pushd "$BUILD_OUTPUT_DIRECTORY"'
           pushd "$BUILD_OUTPUT_DIRECTORY"
           pwd
 
-          echo 'zip -r "$ARTIFACT_FILENAME" .'
-          zip -r "$ARTIFACT_FILENAME" .
+          echo 'zip -r $artifact_name" .'
+          zip -r $artifact_name .
 
           echo 'popd'
           popd
@@ -46,4 +48,4 @@ jobs:
         with:
           prerelease: true
           generate_release_notes: true
-          files: "xyz.attacktive.nyan-wanderer.plasmoid-$GITHUB_REF_NAME"
+          files: "xyz.attacktive.nyan-wanderer-$artifact_name.plasmoid"
