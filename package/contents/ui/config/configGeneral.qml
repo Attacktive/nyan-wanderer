@@ -8,15 +8,19 @@ import org.kde.kcmutils as KCM
 
 Page {
 	id: generalPage
-	title: i18n("Appearance")
+	title: i18n("General")
 
 	property alias cfg_imageSize: imageSizeSpinBox.value
 	property alias cfg_customImagePath: customImageField.text
 	property alias cfg_speed: speedSlider.value
+	property alias cfg_enableRandomIdle: enableRandomIdleCheckBox.checked
+	property alias cfg_idleProbability: idleProbabilitySpinBox.value
 
 	property int cfg_imageSizeDefault: 128
 	property string cfg_customImagePathDefault: ""
 	property double cfg_speedDefault: 2.0
+	property bool cfg_enableRandomIdleDefault: false
+	property int cfg_idleProbabilityDefault: 30
 
 	FileDialog {
 		id: fileDialog
@@ -84,6 +88,25 @@ Page {
 					Layout.minimumWidth: Kirigami.Theme.defaultFont.pointSize * 6
 					horizontalAlignment: Text.AlignRight
 				}
+			}
+
+			CheckBox {
+				id: enableRandomIdleCheckBox
+				Kirigami.FormData.label: i18n("Random Idle:")
+				text: i18n("Enable Enable idling")
+				checked: cfg_enableRandomIdleDefault
+			}
+
+			SpinBox {
+				id: idleProbabilitySpinBox
+				Kirigami.FormData.label: i18n("Idle Probability:")
+				from: 1
+				to: 100
+				value: cfg_idleProbabilityDefault
+				enabled: enableRandomIdleCheckBox.checked
+
+				Layout.fillWidth: true
+				Layout.maximumWidth: Kirigami.Units.gridUnit * 10
 			}
 		}
 

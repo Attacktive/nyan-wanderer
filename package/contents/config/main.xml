@@ -2,7 +2,7 @@
 <kcfg xmlns="http://www.kde.org/standards/kcfg/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
 	<kcfgfile name=""/>
 
-	<group name="Appearance">
+	<group name="General">
 		<entry name="imageSize" type="Int">
 			<label>Size of the Nyan Cat image</label>
 			<default>128</default>
@@ -13,7 +13,15 @@
 		</entry>
 		<entry name="speed" type="Double">
 			<label>Movement speed</label>
-			<default>2.0</default>
+			<default>1.3</default>
+		</entry>
+		<entry name="enableRandomIdle" type="Bool">
+			<label>Enable idling</label>
+			<default>false</default>
+		</entry>
+		<entry name="idleProbability" type="Int">
+			<label>Probability of becoming idle (percentage)</label>
+			<default>13</default>
 		</entry>
 	</group>
 </kcfg>
