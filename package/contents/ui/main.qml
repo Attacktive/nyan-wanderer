@@ -3,62 +3,86 @@ import QtQuick.Layouts
 import org.kde.plasma.plasmoid
 import org.kde.plasma.components as PlasmaComponents
 import org.kde.kirigami as Kirigami
+import org.kde.plasma.core as PlasmaCore
 
 PlasmoidItem {
 	id: root
 
-	property int nyancatSize: 128
+	property int nyancatSize: plasmoid.configuration.imageSize
 	property int speed: 2
 	property point targetPosition: Qt.point(0, 0)
 	property bool movingRight: true
+	property string imageSource: plasmoid.configuration.customImagePath || "../images/nyancat.gif"
+
+	// fixme: Of course it's not robust enough.
+	property bool isAnimated: imageSource.toLowerCase().endsWith(".gif")
+
+	Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
+	Plasmoid.status: PlasmaCore.Types.PassiveStatus
 
 	preferredRepresentation: fullRepresentation
 
 	fullRepresentation: Item {
 		id: container
 
-		AnimatedImage {
-			id: nyancatImage
+		function moveToRandomPosition() {
+			const targetX = Math.random() * (width - imageContainer.width);
+			const targetY = Math.random() * (height - imageContainer.height);
+
+			root.targetPosition = Qt.point(targetX, targetY);
+			root.movingRight = targetX > imageContainer.x
+		}
+
+		Item {
+			id: imageContainer
 			width: root.nyancatSize
 			height: root.nyancatSize
-			source: "../images/nyancat.gif"
-			mirror: !root.movingRight
-			playing: true
+			x: 0
+			y: 0
 
-			Timer {
-				id: moveTimer
-				interval: 20
-				running: true
-				repeat: true
+			AnimatedImage {
+				id: animatedImage
+				anchors.fill: parent
+				source: root.isAnimated ? root.imageSource : ""
+				mirror: !root.movingRight
+				playing: true
+				visible: root.isAnimated
+			}
 
-				onTriggered: {
-					const dx = root.targetPosition.x - nyancatImage.x
-					const dy = root.targetPosition.y - nyancatImage.y
+			Image {
+				id: staticImage
+				anchors.fill: parent
+				source: root.isAnimated ? "" : root.imageSource
+				mirror: !root.movingRight
+				visible: !root.isAnimated
+			}
 
-					if (Math.abs(dx) < root.speed && Math.abs(dy) < root.speed) {
-						root.targetPosition = Qt.point(
-							Math.random() * (container.width - nyancatImage.width),
-							Math.random() * (container.height - nyancatImage.height)
-						)
+			Component.onCompleted: {
+				container.moveToRandomPosition()
+			}
+		}
 
-						root.movingRight = root.targetPosition.x > nyancatImage.x
-					}
+		Timer {
+			id: moveTimer
+			interval: 20
+			running: true
+			repeat: true
 
-					const length = Math.sqrt(dx * dx + dy * dy)
+			onTriggered: {
+				const dx = root.targetPosition.x - imageContainer.x
+				const dy = root.targetPosition.y - imageContainer.y
 
-					if (length > 0) {
-						nyancatImage.x += (dx / length) * root.speed
-						nyancatImage.y += (dy / length) * root.speed
-					}
+				if (Math.abs(dx) < root.speed && Math.abs(dy) < root.speed) {
+					container.moveToRandomPosition()
+				}
+
+				const length = Math.sqrt(dx * dx + dy * dy)
+
+				if (length > 0) {
+					imageContainer.x += (dx / length) * root.speed
+					imageContainer.y += (dy / length) * root.speed
 				}
 			}
 		}
-	}
-
-	Component.onCompleted: {
-		root.targetPosition = Qt.point(
-			Math.random() * (container.width - nyancatImage.width),
-			Math.random() * (container.height - nyancatImage.height)
-		)
 	}
 }
