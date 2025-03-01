@@ -93,7 +93,7 @@ Page {
 			CheckBox {
 				id: enableRandomIdleCheckBox
 				Kirigami.FormData.label: i18n("Random Idle:")
-				text: i18n("Enable Enable idling")
+				text: i18n("Enable idling")
 				checked: cfg_enableRandomIdleDefault
 			}
 
