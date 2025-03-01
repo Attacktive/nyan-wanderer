@@ -5,7 +5,7 @@ on:
       - '**'
 
 env:
-  artifact_name: 'xyz.attacktive.nyan-wanderer-$GITHUB_REF_NAME.plasmoid'
+  artifact_name: 'xyz.attacktive.nyan-wanderer-${{ github.ref_name }}.plasmoid'
 
 jobs:
   release:
