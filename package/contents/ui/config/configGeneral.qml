@@ -39,6 +39,11 @@ Page {
 		Kirigami.FormLayout {
 			Layout.fillWidth: true
 
+			Kirigami.Heading {
+				Kirigami.FormData.isSection: true
+				text: i18n("Image")
+			}
+
 			SpinBox {
 				id: imageSizeSpinBox
 				Kirigami.FormData.label: i18n("Image size:")
@@ -70,6 +75,11 @@ Page {
 				]
 			}
 
+			Kirigami.Heading {
+				Kirigami.FormData.isSection: true
+				text: i18n("Movement")
+			}
+
 			RowLayout {
 				Kirigami.FormData.label: i18n("Speed:")
 				Layout.fillWidth: true
@@ -93,7 +103,7 @@ Page {
 			CheckBox {
 				id: enableRandomIdleCheckBox
 				Kirigami.FormData.label: i18n("Random Idle:")
-				text: i18n("Enable idling")
+				text: i18n("Enabled")
 				checked: cfg_enableRandomIdleDefault
 			}
 
