@@ -7,7 +7,7 @@ import org.kde.plasma.core as PlasmaCore
 import org.kde.kcmutils as KCM
 
 Page {
-	id: generalPage
+	id: appearancePage
 	title: i18n("General")
 
 	property alias cfg_imageSize: imageSizeSpinBox.value
@@ -26,7 +26,7 @@ Page {
 		id: fileDialog
 		title: i18n("Choose an image file")
 		currentFolder: Qt.resolvedUrl("file://" + customImageField.text || "$HOME")
-		nameFilters: [i18n("Image files") + " (*.png *.jpg *.jpeg *.gif)", i18n("All files") + " (*)"]
+		nameFilters: [`${i18n("Image files")} (*.png *.jpg *.jpeg *.gif)`]
 		onAccepted: {
 			customImageField.text = selectedFile.toString().replace("file://", "")
 		}
@@ -73,6 +73,15 @@ Page {
 						onTriggered: customImageField.text = ""
 					}
 				]
+			}
+
+			RowLayout {
+				visible: cfg_customImagePath.length > 0
+				AnimatedImage {
+					Layout.preferredWidth: 200
+					Layout.preferredHeight: 200
+					source: `file://${customImageField.text}`
+				}
 			}
 
 			Kirigami.Heading {
