@@ -22,6 +22,9 @@ Page {
 	property bool cfg_enableRandomIdleDefault: false
 	property int cfg_idleProbabilityDefault: 30
 
+	// fixme: Of course it's not robust enough.
+	readonly property bool isAnimated: customImageField.text.toLowerCase().endsWith(".gif")
+
 	FileDialog {
 		id: fileDialog
 		title: i18n("Choose an image file")
@@ -60,27 +63,37 @@ Page {
 				text: cfg_customImagePathDefault
 				Layout.fillWidth: true
 
-				rightActions: [
-					Kirigami.Action {
-						icon.name: "document-open"
-						tooltip: i18n("Choose image file")
-						onTriggered: fileDialog.open()
-					},
-					Kirigami.Action {
-						icon.name: "edit-clear"
-						tooltip: i18n("Clear")
-						visible: customImageField.text.length > 0
-						onTriggered: customImageField.text = ""
-					}
-				]
+				readonly property var fileOpeningAction: Kirigami.Action {
+					icon.name: "document-open"
+					tooltip: i18n("Choose image file")
+					onTriggered: fileDialog.open()
+				}
+
+				readonly property var clearAction: Kirigami.Action {
+					icon.name: "edit-clear"
+					tooltip: i18n("Clear")
+					visible: customImageField.text.length > 0
+					onTriggered: customImageField.text = ""
+				}
+
+				rightActions: [fileOpeningAction, clearAction]
 			}
 
 			RowLayout {
-				visible: cfg_customImagePath.length > 0
+				id: previewContainer
+
+				readonly property url imagePath: customImageField.text.length > 0? `file://${customImageField.text}`: "../../images/nyancat.gif"
+
 				AnimatedImage {
+					id: preview
 					Layout.preferredWidth: 200
 					Layout.preferredHeight: 200
-					source: `file://${customImageField.text}`
+					source: previewContainer.imagePath
+					playing: true
+
+					readonly property bool isImageReady: status === AnimatedImage.Ready
+
+					onStatusChanged: playing = (status === AnimatedImage.Ready)
 				}
 			}
 

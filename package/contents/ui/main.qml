@@ -19,7 +19,7 @@ PlasmoidItem {
 	property int idleProbability: plasmoid.configuration.idleProbability
 
 	// fixme: Of course it's not robust enough.
-	property bool isAnimated: imageSource.toLowerCase().endsWith(".gif")
+	readonly property bool isAnimated: imageSource.toLowerCase().endsWith(".gif")
 
 	Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
 	Plasmoid.status: PlasmaCore.Types.PassiveStatus
@@ -53,20 +53,12 @@ PlasmoidItem {
 			y: 0
 
 			AnimatedImage {
-				id: animatedImage
 				anchors.fill: parent
-				source: root.isAnimated ? root.imageSource : ""
+				source: root.imageSource
 				mirror: !root.movingRight
 				playing: true
-				visible: root.isAnimated
-			}
 
-			Image {
-				id: staticImage
-				anchors.fill: parent
-				source: root.isAnimated ? "" : root.imageSource
-				mirror: !root.movingRight
-				visible: !root.isAnimated
+				onStatusChanged: playing = (status === AnimatedImage.Ready)
 			}
 
 			Component.onCompleted: {
