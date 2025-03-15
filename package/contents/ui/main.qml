@@ -17,6 +17,7 @@ PlasmoidItem {
 	property bool wasIdleBefore: false
 	property bool enableRandomIdle: plasmoid.configuration.enableRandomIdle
 	property int idleProbability: plasmoid.configuration.idleProbability
+	property bool enableFlipping: plasmoid.configuration.enableFlipping
 
 	// fixme: Of course it's not robust enough.
 	readonly property bool isAnimated: imageSource.toLowerCase().endsWith(".gif")
@@ -55,7 +56,7 @@ PlasmoidItem {
 			AnimatedImage {
 				anchors.fill: parent
 				source: root.imageSource
-				mirror: !root.movingRight
+				mirror: root.enableFlipping ? !root.movingRight : false
 				playing: true
 
 				onStatusChanged: playing = (status === AnimatedImage.Ready)

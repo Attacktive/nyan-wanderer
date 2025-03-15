@@ -14,12 +14,14 @@ Page {
 	property alias cfg_customImagePath: customImageField.text
 	property alias cfg_speed: speedSlider.value
 	property alias cfg_enableRandomIdle: enableRandomIdleCheckBox.checked
+	property alias cfg_enableFlipping: enableFlippingCheckBox.checked
 	property alias cfg_idleProbability: idleProbabilitySpinBox.value
 
 	property int cfg_imageSizeDefault: 128
 	property string cfg_customImagePathDefault: ""
 	property double cfg_speedDefault: 2.0
 	property bool cfg_enableRandomIdleDefault: false
+	property bool cfg_enableFlippingDefault: true
 	property int cfg_idleProbabilityDefault: 30
 
 	// fixme: Of course it's not robust enough.
@@ -127,6 +129,13 @@ Page {
 				Kirigami.FormData.label: i18n("Random Idle:")
 				text: i18n("Enabled")
 				checked: cfg_enableRandomIdleDefault
+			}
+
+			CheckBox {
+				id: enableFlippingCheckBox
+				Kirigami.FormData.label: i18n("Image Flipping:")
+				text: i18n("Enabled")
+				checked: cfg_enableFlippingDefault
 			}
 
 			SpinBox {
