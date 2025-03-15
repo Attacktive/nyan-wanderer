@@ -3,7 +3,7 @@
 	"KPlugin": {
 		"Id": "xyz.attacktive.nyan-wanderer",
 		"Name": "Nyan Wanderer",
-		"Version": "1.0.5",
+		"Version": "1.0.6",
 		"Description": "A cute Nyan Cat that wanders around your desktop",
 		"Category": "Fun and Games",
 		"Icon": "animal-symbolic",
