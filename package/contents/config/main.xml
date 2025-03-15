@@ -19,6 +19,10 @@
 			<label>Enable idling</label>
 			<default>false</default>
 		</entry>
+		<entry name="enableFlipping" type="Bool">
+			<label>Enable image flipping</label>
+			<default>true</default>
+		</entry>
 		<entry name="idleProbability" type="Int">
 			<label>Probability of becoming idle (percentage)</label>
 			<default>13</default>
