@@ -2,7 +2,7 @@
 <kcfg xmlns="http://www.kde.org/standards/kcfg/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0 http://www.kde.org/standards/kcfg/1.0/kcfg.xsd">
 	<kcfgfile name=""/>
 
-	<group name="General">
+	<group name="Image">
 		<entry name="imageSize" type="Int">
 			<label>Size of the Nyan Cat image</label>
 			<default>128</default>
@@ -11,6 +11,8 @@
 			<label>Path to custom image</label>
 			<default></default>
 		</entry>
+	</group>
+	<group name="Movement">
 		<entry name="speed" type="Double">
 			<label>Movement speed</label>
 			<default>1.3</default>
