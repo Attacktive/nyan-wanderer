@@ -78,5 +78,15 @@ Page {
 				Layout.maximumWidth: Kirigami.Units.gridUnit * 10
 			}
 		}
+
+		Item {
+			Layout.fillHeight: true
+		}
+
+		Item {
+			visible: false
+			SpinBox { id: imageSizeSpinBox; value: cfg_imageSizeDefault }
+			TextField { id: customImageField; text: cfg_customImagePathDefault }
+		}
 	}
 }

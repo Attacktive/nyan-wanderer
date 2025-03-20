@@ -96,5 +96,17 @@ Page {
 				}
 			}
 		}
+
+		Item {
+			Layout.fillHeight: true
+		}
+
+		Item {
+			visible: false
+			Slider { id: speedSlider; value: cfg_speedDefault }
+			CheckBox { id: enableRandomIdleCheckBox; checked: cfg_enableRandomIdleDefault }
+			CheckBox { id: enableFlippingCheckBox; checked: cfg_enableFlippingDefault }
+			SpinBox { id: idleProbabilitySpinBox; value: cfg_idleProbabilityDefault }
+		}
 	}
 }
