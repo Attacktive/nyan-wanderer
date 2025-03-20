@@ -1,6 +1,7 @@
 # Nyan Wanderer
 
 [![CodeFactor](https://www.codefactor.io/repository/github/attacktive/nyan-wanderer/badge)](https://www.codefactor.io/repository/github/attacktive/nyan-wanderer)
+[![Release](https://github.com/Attacktive/nyan-wanderer/actions/workflows/release.yaml/badge.svg)](https://github.com/Attacktive/nyan-wanderer/actions/workflows/release.yaml)
 
 A fun Plasma 6 widget that features an animated nyancat wandering around your desktop!
 
