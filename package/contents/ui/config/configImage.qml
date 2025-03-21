@@ -12,19 +12,11 @@ Page {
 
 	property alias cfg_imageSize: imageSizeSpinBox.value
 	property alias cfg_customImagePath: customImageField.text
+	property alias cfg_mirrorImage: mirrorImageCheckBox.checked
 
 	property int cfg_imageSizeDefault: 128
 	property string cfg_customImagePathDefault: ""
-
-	property alias cfg_speed: speedSlider.value
-	property alias cfg_enableRandomIdle: enableRandomIdleCheckBox.checked
-	property alias cfg_enableFlipping: enableFlippingCheckBox.checked
-	property alias cfg_idleProbability: idleProbabilitySpinBox.value
-
-	property double cfg_speedDefault: 2.0
-	property bool cfg_enableRandomIdleDefault: false
-	property bool cfg_enableFlippingDefault: true
-	property int cfg_idleProbabilityDefault: 30
+	property bool cfg_mirrorImageDefault: false
 
 	// fixme: Of course it's not robust enough.
 	readonly property bool isAnimated: customImageField.text.toLowerCase().endsWith(".gif")
@@ -89,24 +81,23 @@ Page {
 					Layout.preferredHeight: 200
 					source: previewContainer.imagePath
 					playing: true
+					mirror: cfg_mirrorImage
 
 					readonly property bool isImageReady: status === AnimatedImage.Ready
 
 					onStatusChanged: playing = (status === AnimatedImage.Ready)
 				}
 			}
+
+			CheckBox {
+				id: mirrorImageCheckBox
+				checked: cfg_mirrorImage
+				Kirigami.FormData.label: i18n("Mirror Image:")
+			}
 		}
 
 		Item {
 			Layout.fillHeight: true
-		}
-
-		Item {
-			visible: false
-			Slider { id: speedSlider; value: cfg_speedDefault }
-			CheckBox { id: enableRandomIdleCheckBox; checked: cfg_enableRandomIdleDefault }
-			CheckBox { id: enableFlippingCheckBox; checked: cfg_enableFlippingDefault }
-			SpinBox { id: idleProbabilitySpinBox; value: cfg_idleProbabilityDefault }
 		}
 	}
 }
