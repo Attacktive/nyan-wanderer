@@ -12,20 +12,14 @@ Page {
 	property alias cfg_enableMovement: enableMovementCheckBox.checked
 	property alias cfg_speed: speedSlider.value
 	property alias cfg_enableRandomIdle: enableRandomIdleCheckBox.checked
-	property alias cfg_enableFlipping: enableFlippingCheckBox.checked
 	property alias cfg_idleProbability: idleProbabilitySpinBox.value
+	property alias cfg_enableFlipping: enableFlippingCheckBox.checked
 
 	property bool cfg_enableMovementDefault: true
 	property double cfg_speedDefault: 2.0
 	property bool cfg_enableRandomIdleDefault: false
-	property bool cfg_enableFlippingDefault: true
 	property int cfg_idleProbabilityDefault: 30
-
-	property alias cfg_imageSize: imageSizeSpinBox.value
-	property alias cfg_customImagePath: customImageField.text
-
-	property int cfg_imageSizeDefault: 128
-	property string cfg_customImagePathDefault: ""
+	property bool cfg_enableFlippingDefault: true
 
 	ColumnLayout {
 		anchors.fill: parent
@@ -36,8 +30,9 @@ Page {
 
 			CheckBox {
 				id: enableMovementCheckBox
+				Kirigami.FormData.label: i18n("Overall Movement:")
 				text: i18n("Enabled")
-				checked: cfg_enableMovementDefault
+				checked: movementPage.cfg_enableMovementDefault
 			}
 
 			RowLayout {
@@ -69,14 +64,6 @@ Page {
 				enabled: enableMovementCheckBox.checked
 			}
 
-			CheckBox {
-				id: enableFlippingCheckBox
-				Kirigami.FormData.label: i18n("Image Flipping:")
-				text: i18n("Enabled")
-				checked: cfg_enableFlippingDefault
-				enabled: enableMovementCheckBox.checked
-			}
-
 			SpinBox {
 				id: idleProbabilitySpinBox
 				Kirigami.FormData.label: i18n("Idle Probability (%):")
@@ -88,16 +75,18 @@ Page {
 				Layout.fillWidth: true
 				Layout.maximumWidth: Kirigami.Units.gridUnit * 10
 			}
+
+			CheckBox {
+				id: enableFlippingCheckBox
+				Kirigami.FormData.label: i18n("Image Flipping Based on the Direction:")
+				text: i18n("Enabled")
+				checked: cfg_enableFlippingDefault
+				enabled: enableMovementCheckBox.checked
+			}
 		}
 
 		Item {
 			Layout.fillHeight: true
-		}
-
-		Item {
-			visible: false
-			SpinBox { id: imageSizeSpinBox; value: cfg_imageSizeDefault }
-			TextField { id: customImageField; text: cfg_customImagePathDefault }
 		}
 	}
 }

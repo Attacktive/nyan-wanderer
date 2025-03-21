@@ -10,7 +10,8 @@ PlasmoidItem {
 
 	property int nyancatSize: plasmoid.configuration.imageSize
 	property string imageSource: plasmoid.configuration.customImagePath || "../images/nyancat.gif"
-	property bool enableMovement: plasmoid.configuration.enableMovement || true
+	property bool mirrorImage: plasmoid.configuration.mirrorImage
+	property bool enableMovement: plasmoid.configuration.enableMovement
 	property double speed: plasmoid.configuration.speed
 	property bool enableRandomIdle: plasmoid.configuration.enableRandomIdle
 	property bool enableFlipping: plasmoid.configuration.enableFlipping
@@ -56,9 +57,12 @@ PlasmoidItem {
 			y: 0
 
 			AnimatedImage {
+				property bool baseMirror: root.enableFlipping ? !root.movingRight : false
+				property bool toMirror: root.mirrorImage ? !baseMirror : baseMirror
+
 				anchors.fill: parent
 				source: root.imageSource
-				mirror: root.enableFlipping ? !root.movingRight : false
+				mirror: toMirror
 				playing: true
 
 				onStatusChanged: playing = (status === AnimatedImage.Ready)
