@@ -9,15 +9,17 @@ PlasmoidItem {
 	id: root
 
 	property int nyancatSize: plasmoid.configuration.imageSize
+	property string imageSource: plasmoid.configuration.customImagePath || "../images/nyancat.gif"
+	property bool enableMovement: plasmoid.configuration.enableMovement || true
 	property double speed: plasmoid.configuration.speed
+	property bool enableRandomIdle: plasmoid.configuration.enableRandomIdle
+	property bool enableFlipping: plasmoid.configuration.enableFlipping
+	property int idleProbability: plasmoid.configuration.idleProbability
+
 	property point targetPosition: Qt.point(0, 0)
 	property bool movingRight: true
-	property string imageSource: plasmoid.configuration.customImagePath || "../images/nyancat.gif"
 	property bool isIdle: false
 	property bool wasIdleBefore: false
-	property bool enableRandomIdle: plasmoid.configuration.enableRandomIdle
-	property int idleProbability: plasmoid.configuration.idleProbability
-	property bool enableFlipping: plasmoid.configuration.enableFlipping
 
 	// fixme: Of course it's not robust enough.
 	readonly property bool isAnimated: imageSource.toLowerCase().endsWith(".gif")
@@ -63,14 +65,16 @@ PlasmoidItem {
 			}
 
 			Component.onCompleted: {
-				container.moveToRandomPosition()
+				if (enableMovement) {
+					container.moveToRandomPosition()
+				}
 			}
 		}
 
 		Timer {
 			id: moveTimer
+			running: enableMovement
 			interval: 20
-			running: true
 			repeat: true
 
 			onTriggered: {
@@ -96,6 +100,7 @@ PlasmoidItem {
 
 		Timer {
 			id: idleTimer
+			running: enableMovement
 			interval: 2000
 			repeat: false
 			onTriggered: {
