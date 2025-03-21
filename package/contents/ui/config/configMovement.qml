@@ -9,11 +9,13 @@ Page {
 	id: movementPage
 	title: i18n("Movement")
 
+	property alias cfg_enableMovement: enableMovementCheckBox.checked
 	property alias cfg_speed: speedSlider.value
 	property alias cfg_enableRandomIdle: enableRandomIdleCheckBox.checked
 	property alias cfg_enableFlipping: enableFlippingCheckBox.checked
 	property alias cfg_idleProbability: idleProbabilitySpinBox.value
 
+	property bool cfg_enableMovementDefault: true
 	property double cfg_speedDefault: 2.0
 	property bool cfg_enableRandomIdleDefault: false
 	property bool cfg_enableFlippingDefault: true
@@ -32,6 +34,12 @@ Page {
 		Kirigami.FormLayout {
 			Layout.fillWidth: true
 
+			CheckBox {
+				id: enableMovementCheckBox
+				text: i18n("Enabled")
+				checked: cfg_enableMovementDefault
+			}
+
 			RowLayout {
 				Kirigami.FormData.label: i18n("Speed:")
 				Layout.fillWidth: true
@@ -43,6 +51,7 @@ Page {
 					to: 10.0
 					stepSize: 0.1
 					value: cfg_speedDefault
+					enabled: enableMovementCheckBox.checked
 				}
 
 				Label {
@@ -57,6 +66,7 @@ Page {
 				Kirigami.FormData.label: i18n("Random Idle:")
 				text: i18n("Enabled")
 				checked: cfg_enableRandomIdleDefault
+				enabled: enableMovementCheckBox.checked
 			}
 
 			CheckBox {
@@ -64,15 +74,16 @@ Page {
 				Kirigami.FormData.label: i18n("Image Flipping:")
 				text: i18n("Enabled")
 				checked: cfg_enableFlippingDefault
+				enabled: enableMovementCheckBox.checked
 			}
 
 			SpinBox {
 				id: idleProbabilitySpinBox
-				Kirigami.FormData.label: i18n("Idle Probability:")
+				Kirigami.FormData.label: i18n("Idle Probability (%):")
 				from: 1
 				to: 100
 				value: cfg_idleProbabilityDefault
-				enabled: enableRandomIdleCheckBox.checked
+				enabled: enableMovementCheckBox.checked && enableRandomIdleCheckBox.checked
 
 				Layout.fillWidth: true
 				Layout.maximumWidth: Kirigami.Units.gridUnit * 10
