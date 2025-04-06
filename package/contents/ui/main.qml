@@ -4,6 +4,7 @@ import org.kde.plasma.plasmoid
 import org.kde.plasma.components as PlasmaComponents
 import org.kde.kirigami as Kirigami
 import org.kde.plasma.core as PlasmaCore
+import QtMultimedia
 
 PlasmoidItem {
 	id: root
@@ -29,6 +30,12 @@ PlasmoidItem {
 	Plasmoid.status: PlasmaCore.Types.PassiveStatus
 
 	preferredRepresentation: fullRepresentation
+
+	MediaPlayer {
+		id: meowSound
+		source: Qt.resolvedUrl("../effects/meow.mp3")
+		audioOutput: AudioOutput {}
+	}
 
 	fullRepresentation: Item {
 		id: container
@@ -66,6 +73,15 @@ PlasmoidItem {
 				playing: true
 
 				onStatusChanged: playing = (status === AnimatedImage.Ready)
+
+				MouseArea {
+					anchors.fill: parent
+					cursorShape: Qt.PointingHandCursor
+					onClicked: {
+						meowSound.stop()
+						meowSound.play()
+					}
+				}
 			}
 
 			Component.onCompleted: {
