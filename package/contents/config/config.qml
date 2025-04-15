@@ -13,4 +13,10 @@ ConfigModel {
 		icon: "transform-move"
 		source: "config/configMovement.qml"
 	}
+
+	ConfigCategory {
+		name: i18n("Sound")
+		icon: "audio-volume-medium"
+		source: "config/configSound.qml"
+	}
 }
