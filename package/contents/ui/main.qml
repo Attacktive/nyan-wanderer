@@ -17,6 +17,7 @@ PlasmoidItem {
 	property bool enableRandomIdle: plasmoid.configuration.enableRandomIdle
 	property bool enableFlipping: plasmoid.configuration.enableFlipping
 	property int idleProbability: plasmoid.configuration.idleProbability
+	property double volume: plasmoid.configuration.volume
 
 	property point targetPosition: Qt.point(0, 0)
 	property bool movingRight: true
@@ -34,7 +35,9 @@ PlasmoidItem {
 	MediaPlayer {
 		id: meowSound
 		source: Qt.resolvedUrl("../effects/meow.mp3")
-		audioOutput: AudioOutput {}
+		audioOutput: AudioOutput {
+			volume: root.volume
+		}
 	}
 
 	fullRepresentation: Item {

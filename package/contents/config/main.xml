@@ -38,4 +38,12 @@
 			<default>true</default>
 		</entry>
 	</group>
+	<group name="Sound">
+		<entry name="volume" type="Double">
+			<label>Sound effect volume</label>
+			<default>1.0</default>
+			<min>0.0</min>
+			<max>1.0</max>
+		</entry>
+	</group>
 </kcfg>
