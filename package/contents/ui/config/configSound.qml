@@ -7,14 +7,13 @@ import QtMultimedia
 Item {
 	id: soundPage;
 
-	property alias cfg_volume: soundPage.internalVolume
-	property double internalVolume: volumeSlider.value / 100
+	property double cfg_volume: plasmoid.configuration.volume
 
 	MediaPlayer {
 		id: testSound;
 		source: Qt.resolvedUrl("../../effects/meow.mp3");
 		audioOutput: AudioOutput {
-			volume: volumeSlider.value / 100
+			volume: soundPage.cfg_volume
 		}
 	}
 
@@ -34,7 +33,8 @@ Item {
 					from: 0;
 					to: 100
 					stepSize: 1
-					value: plasmoid.configuration.volume * 100
+					value: soundPage.cfg_volume * 100
+					onValueChanged: soundPage.cfg_volume = value / 100
 					Layout.fillWidth: true
 
 					ToolTip {
