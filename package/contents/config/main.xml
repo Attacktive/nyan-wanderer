@@ -45,5 +45,9 @@
 			<min>0.0</min>
 			<max>1.0</max>
 		</entry>
+		<entry name="customSoundPath" type="String">
+			<label>Path to custom sound effect</label>
+			<default></default>
+		</entry>
 	</group>
 </kcfg>

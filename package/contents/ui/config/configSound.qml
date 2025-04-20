@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import QtQuick.Dialogs
 import org.kde.kirigami as Kirigami
 import QtMultimedia
 
@@ -8,10 +9,11 @@ Item {
 	id: soundPage;
 
 	property double cfg_volume: plasmoid.configuration.volume
+	property string cfg_customSoundPath: plasmoid.configuration.customSoundPath
 
 	MediaPlayer {
 		id: testSound;
-		source: Qt.resolvedUrl("../../effects/meow.mp3");
+		source: cfg_customSoundPath ? cfg_customSoundPath : Qt.resolvedUrl("../../effects/meow.mp3");
 		audioOutput: AudioOutput {
 			volume: soundPage.cfg_volume
 		}
@@ -59,6 +61,40 @@ Item {
 					}
 				}
 			}
+
+			RowLayout {
+				Kirigami.FormData.label: i18n("Custom sound:")
+				Layout.fillWidth: true
+
+				TextField {
+					id: soundPathField
+					text: soundPage.cfg_customSoundPath
+					placeholderText: i18n("Path to custom sound file")
+					Layout.fillWidth: true
+					readOnly: true
+				}
+
+				Button {
+					text: i18n("Browse...")
+					icon.name: "folder-open"
+					onClicked: soundFileDialog.open()
+				}
+
+				Button {
+					text: i18n("Reset")
+					icon.name: "edit-undo"
+					enabled: soundPage.cfg_customSoundPath !== ""
+					onClicked: soundPage.cfg_customSoundPath = ""
+				}
+			}
 		}
+	}
+
+	FileDialog {
+		id: soundFileDialog
+		title: i18n("Choose a sound file")
+		currentFolder: StandardPaths.standardLocations(StandardPaths.HomeLocation)[0]
+		nameFilters: [i18n("Audio files (*.mp3 *.wav *.ogg)"), i18n("All files (*)")]
+		onAccepted: soundPage.cfg_customSoundPath = selectedFile
 	}
 }
