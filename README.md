@@ -25,6 +25,9 @@ It's completely useless by design. 😏
 	```
 	- Ubuntu 24.04
 	```bash
+	# Adding KDE neon PPA to the containerized Ubuntu because it lacks dependencies for Plasma 6
+	$ echo "deb [trusted=yes] http://archive.neon.kde.org/user noble main" | sudo tee /etc/apt/sources.list.d/neon.list
+	$ sudo apt update
 	$ sudo apt install build-essential kf6-extra-cmake-modules plasma-framework6-dev
 	```
 
