@@ -1,6 +1,9 @@
 .idea
-cmake-build-debug
+/cmake-build-debug/
 .cache
-build
+/build/
 
 CMakeList.txt.user
+
+/package/contents/locale/
+infiles.list

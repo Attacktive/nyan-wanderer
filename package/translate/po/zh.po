@@ -1,0 +1,112 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: nyan-wanderer\n"
+"Report-Msgid-Bugs-To: https://github.com/Attacktive/nyan-wanderer\n"
+"POT-Creation-Date: 2025-04-27 15:05+0900\n"
+"Language: zh_CN\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../contents/config/config.qml ../contents/ui/config/configImage.qml
+msgid "Image"
+msgstr "图像"
+
+#: ../contents/config/config.qml ../contents/ui/config/configMovement.qml
+msgid "Movement"
+msgstr "移动"
+
+#: ../contents/config/config.qml
+msgid "Sound"
+msgstr "声音"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Choose an image file"
+msgstr "选择图像文件"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Image files"
+msgstr "图像文件"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Image size:"
+msgstr "图像大小："
+
+#: ../contents/ui/config/configImage.qml
+msgid "Custom image:"
+msgstr "自定义图像："
+
+#: ../contents/ui/config/configImage.qml
+msgid "Leave empty for default Nyan Cat"
+msgstr "留空为默认Nyan Cat"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Choose image file"
+msgstr "选择图像文件"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Clear"
+msgstr "清除"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Mirror Image:"
+msgstr "镜像："
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Overall Movement:"
+msgstr "总体移动："
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Enabled"
+msgstr "启用"
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Speed:"
+msgstr "速度："
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Random Idle:"
+msgstr "随机待机："
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Idle Probability (%):"
+msgstr "空闲概率（%）："
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Image Flipping Based on the Direction:"
+msgstr "根据方向翻转图像："
+
+#: ../contents/ui/config/configSound.qml
+msgid "Volume:"
+msgstr "音量："
+
+#: ../contents/ui/config/configSound.qml
+msgid "Test"
+msgstr "测试"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Custom sound:"
+msgstr "自定义声音："
+
+#: ../contents/ui/config/configSound.qml
+msgid "Path to custom sound file"
+msgstr "自定义声音文件路径"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Browse..."
+msgstr "浏览..."
+
+#: ../contents/ui/config/configSound.qml
+msgid "Reset"
+msgstr "重置"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Choose a sound file"
+msgstr "选择声音文件"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Audio files (*.mp3 *.wav *.ogg)"
+msgstr "音频文件 (*.mp3 *.wav *.ogg)"
+
+#: ../contents/ui/config/configSound.qml
+msgid "All files (*)"
+msgstr "所有文件 (*)"

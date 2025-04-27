@@ -1,0 +1,112 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: nyan-wanderer\n"
+"Report-Msgid-Bugs-To: https://github.com/Attacktive/nyan-wanderer\n"
+"POT-Creation-Date: 2025-04-27 15:05+0900\n"
+"Language: fr\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../contents/config/config.qml ../contents/ui/config/configImage.qml
+msgid "Image"
+msgstr "Image"
+
+#: ../contents/config/config.qml ../contents/ui/config/configMovement.qml
+msgid "Movement"
+msgstr "Mouvement"
+
+#: ../contents/config/config.qml
+msgid "Sound"
+msgstr "Son"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Choose an image file"
+msgstr "Choisir un fichier image"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Image files"
+msgstr "Fichiers image"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Image size:"
+msgstr "Taille de l'image :"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Custom image:"
+msgstr "Image personnalisée :"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Leave empty for default Nyan Cat"
+msgstr "Laisser vide pour le Nyan Cat par défaut"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Choose image file"
+msgstr "Choisir le fichier image"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Clear"
+msgstr "Effacer"
+
+#: ../contents/ui/config/configImage.qml
+msgid "Mirror Image:"
+msgstr "Image miroir :"
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Overall Movement:"
+msgstr "Mouvement général :"
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Enabled"
+msgstr "Activé"
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Speed:"
+msgstr "Vitesse :"
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Random Idle:"
+msgstr "Attente aléatoire :"
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Idle Probability (%):"
+msgstr "Probabilité d'inactivité (%) :"
+
+#: ../contents/ui/config/configMovement.qml
+msgid "Image Flipping Based on the Direction:"
+msgstr "Retournement d'image selon la direction :"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Volume:"
+msgstr "Volume :"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Test"
+msgstr "Tester"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Custom sound:"
+msgstr "Son personnalisé :"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Path to custom sound file"
+msgstr "Chemin vers le fichier son personnalisé"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Browse..."
+msgstr "Parcourir..."
+
+#: ../contents/ui/config/configSound.qml
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Choose a sound file"
+msgstr "Choisir un fichier son"
+
+#: ../contents/ui/config/configSound.qml
+msgid "Audio files (*.mp3 *.wav *.ogg)"
+msgstr "Fichiers audio (*.mp3 *.wav *.ogg)"
+
+#: ../contents/ui/config/configSound.qml
+msgid "All files (*)"
+msgstr "Tous les fichiers (*)"
