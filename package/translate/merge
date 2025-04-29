@@ -8,7 +8,7 @@ SCRIPT_PATH=$(dirname "$SCRIPT")
 # https://techbase.kde.org/Development/Tutorials/Localization/i18n_Build_Systems/Outside_KDE_repositories
 # https://invent.kde.org/sysadmin/l10n-scripty/-/blob/master/extract-messages.sh
 
-pushd $SCRIPT_PATH
+pushd "$SCRIPT_PATH" || exit
 
 plasmoidName='xyz.attacktive.nyan-wanderer'
 widgetName="${plasmoidName##*.}" # Strip namespace
@@ -126,7 +126,7 @@ fi
 
 path_to_readme="$SCRIPT_PATH/README.md"
 
-potMessageCount=$(expr $(grep -Pzo 'msgstr ""\n(\n|$)' "$path_to_template_pot" | grep -c 'msgstr ""'))
+potMessageCount=$(grep -Pzo 'msgstr ""\n(\n|$)' "$path_to_template_pot" | grep -c 'msgstr ""')
 echo '## Translation' > "$path_to_readme"
 echo '' >> "$path_to_readme"
 echo '|  Locale  |  Lines  | % Done|' >> "$path_to_readme"
@@ -175,9 +175,9 @@ for cat in $catalogs; do
 	sed -i 's/# Translation of '"${widgetName}"' in LANGUAGE/'"# Translation of ${widgetName} in ${catLocale}"'/' "$cat.new"
 	sed -i 's/# Copyright (C) YEAR THE PACKAGE'"'"'S COPYRIGHT HOLDER/'"# Copyright (C) $(date +%Y)"'/' "$cat.new"
 
-	poEmptyMessageCount=$(expr $(grep -Pzo 'msgstr ""\n(\n|$)' "$cat.new" | grep -c 'msgstr ""'))
-	poMessagesDoneCount=$(expr "$potMessageCount" - "$poEmptyMessageCount")
-	poCompletion=$(perl -e "printf(\"%d\", $poMessagesDoneCount * 100 / $potMessageCount)")
+	poEmptyMessageCount=$(grep -Pzo 'msgstr ""\n(\n|$)' "$cat.new" | grep -c 'msgstr ""')
+	poMessagesDoneCount=$((potMessageCount - poEmptyMessageCount))
+	poCompletion=$((poMessagesDoneCount * 100 / potMessageCount))
 	poLine=$(perl -e "printf(\"$entryFormat\", \"$catLocale\", \"${poMessagesDoneCount}/${potMessageCount}\", \"${poCompletion}%\")")
 	echo "$poLine" >> "$path_to_readme"
 
@@ -187,4 +187,4 @@ echoBlue '[translate/merge] Done merging messages'
 
 echoBlue '[translate/merge] Done merge script'
 
-popd
+popd || exit
