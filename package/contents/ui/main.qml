@@ -24,9 +24,6 @@ PlasmoidItem {
 	property bool isIdle: false
 	property bool wasIdleBefore: false
 
-	// fixme: Of course it's not robust enough.
-	readonly property bool isAnimated: imageSource.toLowerCase().endsWith(".gif")
-
 	Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
 	Plasmoid.status: PlasmaCore.Types.PassiveStatus
 

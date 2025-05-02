@@ -18,9 +18,6 @@ Page {
 	property string cfg_customImagePathDefault: ""
 	property bool cfg_mirrorImageDefault: false
 
-	// fixme: Of course it's not robust enough.
-	readonly property bool isAnimated: customImageField.text.toLowerCase().endsWith(".gif")
-
 	FileDialog {
 		id: fileDialog
 		title: i18n("Choose an image file")
