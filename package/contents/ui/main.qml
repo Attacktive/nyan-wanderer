@@ -31,7 +31,7 @@ PlasmoidItem {
 
 	MediaPlayer {
 		id: meowSound
-		source: plasmoid.configuration.customSoundPath ? plasmoid.configuration.customSoundPath : Qt.resolvedUrl("../effects/meow.mp3")
+		source: plasmoid.configuration.customSoundPath ?? Qt.resolvedUrl("../effects/meow.mp3");
 		audioOutput: AudioOutput {
 			volume: root.volume
 		}
@@ -64,8 +64,8 @@ PlasmoidItem {
 			y: 0
 
 			AnimatedImage {
-				property bool baseMirror: root.enableFlipping ? !root.movingRight : false
-				property bool toMirror: root.mirrorImage ? !baseMirror : baseMirror
+				property bool baseMirror: root.enableFlipping? !root.movingRight: false
+				property bool toMirror: root.mirrorImage? !baseMirror: baseMirror
 
 				anchors.fill: parent
 				source: root.imageSource
