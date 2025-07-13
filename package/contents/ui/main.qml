@@ -31,7 +31,7 @@ PlasmoidItem {
 
 	MediaPlayer {
 		id: meowSound
-		source: plasmoid.configuration.customSoundPath ?? Qt.resolvedUrl("../effects/meow.mp3");
+		source: plasmoid.configuration.customSoundPath || Qt.resolvedUrl("../effects/meow.mp3");
 		audioOutput: AudioOutput {
 			volume: root.volume
 		}

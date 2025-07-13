@@ -13,7 +13,7 @@ Item {
 
 	MediaPlayer {
 		id: testSound;
-		source: cfg_customSoundPath ?? Qt.resolvedUrl("../../effects/meow.mp3");
+		source: cfg_customSoundPath || Qt.resolvedUrl("../../effects/meow.mp3");
 		audioOutput: AudioOutput {
 			volume: soundPage.cfg_volume
 		}
