@@ -91,29 +91,26 @@ PlasmoidItem {
 			}
 		}
 
-		Timer {
-			id: moveTimer
+		FrameAnimation {
 			running: enableMovement
-			interval: 20
-			repeat: true
 
 			onTriggered: {
 				if (root.isIdle) {
-					return;
+					return
 				}
 
+				const step = root.speed * frameTime * 50
 				const dx = root.targetPosition.x - imageContainer.x
 				const dy = root.targetPosition.y - imageContainer.y
+				const length = Math.hypot(dx, dy)
 
-				if (Math.abs(dx) < root.speed && Math.abs(dy) < root.speed) {
+				if (length <= step) {
+					imageContainer.x = root.targetPosition.x
+					imageContainer.y = root.targetPosition.y
 					container.moveToRandomPosition()
-				}
-
-				const length = Math.sqrt(dx * dx + dy * dy)
-
-				if (length > 0) {
-					imageContainer.x += (dx / length) * root.speed
-					imageContainer.y += (dy / length) * root.speed
+				} else {
+					imageContainer.x += dx / length * step
+					imageContainer.y += dy / length * step
 				}
 			}
 		}
