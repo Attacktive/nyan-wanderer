@@ -11,12 +11,19 @@ Page {
 	title: i18n("Image")
 
 	property alias cfg_imageSize: imageSizeSpinBox.value
+	property alias cfg_defaultImage: defaultImageCombo.currentValue
 	property alias cfg_customImagePath: customImageField.text
 	property alias cfg_mirrorImage: mirrorImageCheckBox.checked
 
 	property int cfg_imageSizeDefault: 128
+	property string cfg_defaultImageDefault: "nyancat"
 	property string cfg_customImagePathDefault: ""
 	property bool cfg_mirrorImageDefault: false
+
+	readonly property var defaultImages: [
+		{ value: "nyancat", label: "Nyan Cat", image: "../../images/nyancat.gif" },
+		{ value: "tacnayn", label: "Tac Nayn", image: "../../images/tacnayn.gif" }
+	]
 
 	FileDialog {
 		id: fileDialog
@@ -44,10 +51,19 @@ Page {
 				value: cfg_imageSizeDefault
 			}
 
+			ComboBox {
+				id: defaultImageCombo
+				Kirigami.FormData.label: i18n("Built-in image:")
+				model: imagePage.defaultImages
+				textRole: "label"
+				valueRole: "value"
+				currentIndex: imagePage.defaultImages.findIndex(({ value }) => value === cfg_defaultImageDefault)
+			}
+
 			Kirigami.ActionTextField {
 				id: customImageField
 				Kirigami.FormData.label: i18n("Custom image:")
-				placeholderText: i18n("Leave empty for default Nyan Cat")
+				placeholderText: i18n("Leave empty for built-in image")
 				text: cfg_customImagePathDefault
 				Layout.fillWidth: true
 
@@ -70,7 +86,15 @@ Page {
 			RowLayout {
 				id: previewContainer
 
-				readonly property url imagePath: customImageField.text.length > 0? `file://${customImageField.text}`: "../../images/nyancat.gif"
+				readonly property url imagePath: {
+					if (customImageField.text.length > 0) {
+						return `file://${customImageField.text}`;
+					}
+
+					const selected = imagePage.defaultImages.find(({ value }) => value === defaultImageCombo.currentValue);
+
+					return selected?.image ?? "../../images/nyancat.gif";
+				}
 
 				AnimatedImage {
 					id: preview

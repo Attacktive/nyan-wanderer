@@ -7,6 +7,10 @@
 			<label>Size of the Nyan Cat image</label>
 			<default>128</default>
 		</entry>
+		<entry name="defaultImage" type="String">
+			<label>Built-in image to use</label>
+			<default>nyancat</default>
+		</entry>
 		<entry name="customImagePath" type="String">
 			<label>Path to custom image</label>
 			<default></default>

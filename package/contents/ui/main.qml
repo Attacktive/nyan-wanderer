@@ -10,7 +10,12 @@ PlasmoidItem {
 	id: root
 
 	property int nyancatSize: plasmoid.configuration.imageSize
-	property string imageSource: plasmoid.configuration.customImagePath || "../images/nyancat.gif"
+	property var defaultImages: ({
+		"nyancat": "../images/nyancat.gif",
+		"tacnayn": "../images/tacnayn.gif"
+	})
+
+	property string imageSource: plasmoid.configuration.customImagePath || defaultImages[plasmoid.configuration.defaultImage] || "../images/nyancat.gif"
 	property bool mirrorImage: plasmoid.configuration.mirrorImage
 	property bool enableMovement: plasmoid.configuration.enableMovement
 	property double speed: plasmoid.configuration.speed
