@@ -7,7 +7,10 @@ A fun Plasma 6 widget that features an animated Nyan Cat roaming around your des
 
 It's completely useless by design. 😏
 
-![Nyan Cat](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExeDBscW5yOXB0dmtwdGIwN2tndDN6YXNuczJtM3BxYzFtaWRxbDBwbSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3nZckcvfbUZuTrYxND/giphy.gif)
+[nyancat.webm](https://github.com/user-attachments/assets/96ee8750-bfcd-42e3-bd39-f4a3e9866a00)
+
+[tacnayn.webm](https://github.com/user-attachments/assets/82953fea-b08c-4d74-8573-0629e01c540a)
+
 
 ## Installation
 
