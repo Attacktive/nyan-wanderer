@@ -4,6 +4,9 @@ on:
     tags:
       - '**'
 
+permissions:
+  contents: write
+
 env:
   artifact_name: 'xyz.attacktive.nyan-wanderer-${{ github.ref_name }}.plasmoid'
 
