@@ -11,7 +11,7 @@ Page {
 	title: i18n("Image")
 
 	property alias cfg_imageSize: imageSizeSpinBox.value
-	property alias cfg_defaultImage: defaultImageCombo.currentValue
+	property string cfg_defaultImage: cfg_defaultImageDefault
 	property alias cfg_customImagePath: customImageField.text
 	property alias cfg_mirrorImage: mirrorImageCheckBox.checked
 
@@ -57,7 +57,9 @@ Page {
 				model: imagePage.defaultImages
 				textRole: "label"
 				valueRole: "value"
-				currentIndex: imagePage.defaultImages.findIndex(({ value }) => value === cfg_defaultImageDefault)
+				currentIndex: imagePage.defaultImages.findIndex(({ value }) => value === imagePage.cfg_defaultImage)
+
+				onActivated: imagePage.cfg_defaultImage = currentValue
 			}
 
 			Kirigami.ActionTextField {
@@ -91,7 +93,7 @@ Page {
 						return `file://${customImageField.text}`;
 					}
 
-					const selected = imagePage.defaultImages.find(({ value }) => value === defaultImageCombo.currentValue);
+					const selected = imagePage.defaultImages.find(({ value }) => value === imagePage.cfg_defaultImage);
 
 					return selected?.image ?? "../../images/nyancat.gif";
 				}
@@ -112,7 +114,7 @@ Page {
 
 			CheckBox {
 				id: mirrorImageCheckBox
-				checked: cfg_mirrorImage
+				checked: cfg_mirrorImageDefault
 				Kirigami.FormData.label: i18n("Mirror Image:")
 			}
 		}
